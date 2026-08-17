@@ -34,10 +34,6 @@ export class FormatterSettingTab extends PluginSettingTab {
     const { containerEl } = this;
     containerEl.empty();
     new Setting(containerEl)
-      .setName("Markdown Formatter")
-      .setHeading();
-
-    new Setting(containerEl)
       .setName("Always show preview")
       .setDesc("Require confirmation before any document is changed.")
       .addToggle((toggle) => toggle.setValue(this.plugin.settings.forcePreview).onChange(async (value) => {

@@ -72,7 +72,6 @@ export function createProtectedDocument(text: string): ProtectedDocument {
   }
 
   const ranges: ProtectedRange[] = [];
-  let cursor = 0;
   let inFrontmatter = false;
   let frontmatterStart = -1;
   let fence: { marker: string; start: number } | undefined;
@@ -85,13 +84,11 @@ export function createProtectedDocument(text: string): ProtectedDocument {
     if (index === 0 && trimmed === "---") {
       inFrontmatter = true;
       frontmatterStart = lineStart;
-      cursor = lineEnd;
       return;
     }
     if (inFrontmatter && trimmed === "---") {
       ranges.push({ start: frontmatterStart, end: lineEnd, kind: "frontmatter" });
       inFrontmatter = false;
-      cursor = lineEnd;
       return;
     }
     if (fence) {
@@ -100,7 +97,6 @@ export function createProtectedDocument(text: string): ProtectedDocument {
         ranges.push({ start: fence.start, end: lineEnd, kind: "code-fence" });
         fence = undefined;
       }
-      cursor = lineEnd;
       return;
     }
 
@@ -108,7 +104,6 @@ export function createProtectedDocument(text: string): ProtectedDocument {
     if (opening) {
       fence = { marker: opening[1], start: lineStart };
     }
-    cursor = lineEnd;
   });
 
   if (inFrontmatter && frontmatterStart >= 0) {
