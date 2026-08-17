@@ -1,0 +1,21 @@
+{
+  "name": "obsidian-markdown-formatter",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A conservative, local Markdown format repair plugin for Obsidian.",
+  "main": "main.js",
+  "scripts": {
+    "build": "node esbuild.config.mjs production",
+    "dev": "node esbuild.config.mjs development",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "esbuild": "^0.24.0",
+    "obsidian": "^1.7.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

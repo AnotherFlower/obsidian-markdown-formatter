@@ -1,0 +1,15 @@
+.omf-modal-buttons { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1rem; }
+.omf-batch-list { display: flex; flex-direction: column; gap: 0.4rem; max-height: 50vh; overflow: auto; }
+.omf-batch-item { display: flex; gap: 0.5rem; align-items: center; }
+.omf-batch-item input { flex: 0 0 auto; }
+.omf-rendered-preview { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 1rem 0; }
+.omf-preview-panel { min-width: 0; border: 1px solid var(--background-modifier-border); border-radius: 6px; overflow: hidden; }
+.omf-preview-panel h3 { margin: 0; padding: 0.6rem 0.8rem; font-size: var(--font-ui-small); background: var(--background-secondary); }
+.omf-preview-body { padding: 0.8rem; max-height: 45vh; overflow: auto; }
+.omf-preview-body > :first-child { margin-top: 0; }
+.omf-preview-body > :last-child { margin-bottom: 0; }
+.omf-resizable-modal { width: min(90vw, 1200px); height: min(85vh, 900px); max-width: 95vw; max-height: 92vh; min-width: 620px; min-height: 420px; resize: both; overflow: hidden; }
+.omf-resizable-modal .modal-content { height: 100%; overflow: auto; }
+.omf-resizable-modal .omf-preview-body { max-height: 52vh; }
+.omf-resizable-modal pre { max-height: 32vh; overflow: auto; white-space: pre-wrap; word-break: break-word; }
+@media (max-width: 700px) { .omf-rendered-preview { grid-template-columns: 1fr; } }
