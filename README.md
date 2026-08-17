@@ -9,6 +9,7 @@ Markdown Formatter is a conservative, local-only Obsidian plugin that repairs co
 - Close clearly unclosed fenced code blocks without changing their contents.
 - Normalize heading, list, blockquote, and Callout prefixes.
 - Remove accidental trailing whitespace while preserving Markdown hard breaks.
+- Normalize URL-encoded note paths, including C++ namespace folders.
 - Preview every document change before writing it.
 - Scan the current document, current folder, or entire vault.
 - Restore the most recent repair snapshot.
@@ -51,9 +52,12 @@ Use the command palette:
 - **Repair current selection or document**: repair the selected text, or the entire active note when there is no selection.
 - **Scan current folder for repairs**: scan Markdown files in the active note's folder, select files, then review each change.
 - **Scan entire vault for repairs**: scan all Markdown files, select files, then review each change.
+- **Normalize encoded note paths in current folder / entire vault**: preview safe moves such as `std%3A%3Aatomic_flag.md` to `std/atomic_flag.md`, creating missing folders and skipping conflicts.
 - **Restore the most recent repair**: restore only files that have not changed since the repair.
 
 The settings tab controls individual rules, preview behavior, batch limits, history retention, and line-ending preservation.
+
+Path normalization is a separate, explicit operation. It decodes URL-encoded Markdown file names, converts `::` namespace separators into folders, and maps Windows-invalid characters to readable full-width characters. The note body is not changed. Existing targets, malformed encodings, unsafe paths, and duplicate targets are skipped and reported. Obsidian's file manager is used so recognized internal links can be updated.
 
 ## Development
 

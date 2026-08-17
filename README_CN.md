@@ -11,6 +11,7 @@
 - 补全明确缺失的代码块结束围栏，不修改代码块内部内容。
 - 规范标题、列表、引用和 Callout 的前缀空格。
 - 删除意外的行尾空白，同时保留 Markdown 的两个空格换行。
+- 将 URL 编码的笔记文件名转成可读路径，例如 `std%3A%3Aatomic_flag.md` 转为 `std/atomic_flag.md`。
 - 支持当前选区、当前文档、当前文件夹和整个 Vault。
 - 每次修改都可以预览、确认或取消。
 - 保存最近的修复快照，支持恢复最近一次修复。
@@ -57,9 +58,22 @@ BRAT 会从本仓库的 GitHub Release 下载 `main.js`、`manifest.json`、`sty
 
 执行 `Scan entire vault for repairs`。插件会扫描整个 Vault，先选择需要处理的文件，再逐文件确认。扫描文件数量受设置中的 `Batch file limit` 限制。
 
+### 修复编码笔记路径
+
+路径迁移是独立命令，不会在普通 Markdown 修复中自动执行：
+
+- `Normalize encoded note paths in current folder`：扫描当前笔记所在文件夹。
+- `Normalize encoded note paths in entire vault`：扫描整个 Vault。
+
+例如 `C++/std/std%3A%3Aatomic_flag.md` 会预览为 `C++/std/std/atomic_flag.md`。解码后的 `::` 变成目录层级；`< > : " / \ | ? *` 等 Windows 不支持的字符转换为可读的全角字符。不存在的目录会在确认移动时创建。
+
+路径预览会显示源路径、目标路径和跳过原因。目标已存在、编码错误、不安全路径或多个文件指向同一目标时会跳过，不覆盖已有文件。笔记正文不会修改；移动使用 Obsidian 文件管理接口，已识别的内部链接由 Obsidian 负责更新。
+
 ### 恢复最近一次修复
 
 执行 `Restore the most recent repair`。只有文件内容仍等于修复后的版本时才会恢复；如果文件之后被其他操作修改，插件会跳过它，避免覆盖新内容。
+
+路径迁移也会记录在最近一次修复历史中。恢复时会把仍位于目标位置且原路径空闲的文件移回；创建的空目录不会自动删除。
 
 ## 支持的修复规则
 
