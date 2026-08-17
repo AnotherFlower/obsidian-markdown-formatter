@@ -1,6 +1,6 @@
-# Obsidian Markdown Formatter
+# Markdown Formatter
 
-Obsidian Markdown Formatter is a conservative, local-only plugin that repairs common formatting mistakes produced by AI assistants and copied Markdown. It always reports what it changed and skips content that cannot be repaired with high confidence.
+Markdown Formatter is a conservative, local-only Obsidian plugin that repairs common formatting mistakes produced by AI assistants and copied Markdown. It always reports what it changed and skips content that cannot be repaired with high confidence.
 
 ## Features
 
@@ -25,7 +25,7 @@ Until the plugin is listed in the official Community Plugins directory, install 
 
 1. Install and enable **BRAT** from Obsidian's Community Plugins directory.
 2. Run **BRAT: Add a beta plugin for testing**.
-3. Enter `AnotherFlower/obsidian-markdown-formatter` and enable **Obsidian Markdown Formatter**.
+3. Enter `AnotherFlower/obsidian-markdown-formatter` and enable **Markdown Formatter**.
 
 BRAT downloads the plugin from this repository's GitHub releases. Install it independently on every device; do not copy or sync `.obsidian/plugins/anotherflower-markdown-formatter/` through a vault sync service.
 

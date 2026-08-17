@@ -1,6 +1,6 @@
-# Obsidian Markdown Formatter
+# Markdown Formatter
 
-`Obsidian Markdown Formatter` 是一个纯本地运行的 Obsidian 插件，用于修复 AI 对话、网页复制或手工编辑产生的常见 Markdown 格式问题。
+`Markdown Formatter` 是一个纯本地运行的 Obsidian 插件，用于修复 AI 对话、网页复制或手工编辑产生的常见 Markdown 格式问题。
 
 插件采用保守策略：只修改能够明确判断的结构错误，无法确定时跳过并在预览中报告，不重写普通自然语言，也不会调用外部大模型。
 
@@ -24,13 +24,13 @@
 1. 在 Obsidian 的“设置 → 第三方插件”中安装并启用 **BRAT**。
 2. 打开命令面板，执行 `BRAT: Add a beta plugin for testing`。
 3. 输入仓库：`AnotherFlower/obsidian-markdown-formatter`。
-4. 启用 **Obsidian Markdown Formatter**。
+4. 启用 **Markdown Formatter**。
 
 BRAT 会从本仓库的 GitHub Release 下载 `main.js`、`manifest.json`、`styles.css` 和 `versions.json`。在每台电脑或移动设备上重复上述步骤即可；不要从另一台设备复制 `.obsidian/plugins/anotherflower-markdown-formatter/`。
 
 ### 官方社区插件目录
 
-本插件也会提交到 Obsidian 官方 Community Plugins 目录。审核通过后，可直接在“设置 → 第三方插件”中搜索 **Obsidian Markdown Formatter** 安装；安装文件仍由 Obsidian 从 GitHub Release 获取。
+本插件也会提交到 Obsidian 官方 Community Plugins 目录。审核通过后，可直接在“设置 → 第三方插件”中搜索 **Markdown Formatter** 安装；安装文件仍由 Obsidian 从 GitHub Release 获取。
 
 ### 同步设置
 
@@ -105,7 +105,7 @@ $$
 
 ## 设置
 
-在“设置 → 第三方插件 → Obsidian Markdown Formatter”中可以配置：
+在“设置 → 第三方插件 → Markdown Formatter”中可以配置：
 
 - `Always show preview`：所有写回前都显示预览，默认开启。
 - `Preserve line endings`：保留原文的 LF 或 CRLF 换行风格。
