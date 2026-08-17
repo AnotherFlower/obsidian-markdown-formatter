@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "minAppVersion": "1.5.0",
   "description": "Conservatively repairs common Markdown formatting errors locally, with previews and recovery.",
-  "author": "",
-  "authorUrl": "",
+  "author": "AnotherFlower",
+  "authorUrl": "https://github.com/AnotherFlower",
   "isDesktopOnly": false
 }

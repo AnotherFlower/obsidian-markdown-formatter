@@ -19,14 +19,30 @@ The plugin has no network access and does not send note content to an external s
 
 See [README_CN.md](README_CN.md) for Chinese usage and installation instructions.
 
-For development, clone this repository, install dependencies, and build:
+### GitHub releases and BRAT
+
+Until the plugin is listed in the official Community Plugins directory, install it with [BRAT](https://obsidian.md/plugins?id=obsidian42-brat):
+
+1. Install and enable **BRAT** from Obsidian's Community Plugins directory.
+2. Run **BRAT: Add a beta plugin for testing**.
+3. Enter `AnotherFlower/obsidian-markdown-formatter` and enable **Obsidian Markdown Formatter**.
+
+BRAT downloads the plugin from this repository's GitHub releases. Install it independently on every device; do not copy or sync `.obsidian/plugins/obsidian-markdown-formatter/` through a vault sync service.
+
+### Official Community Plugins
+
+The plugin will also be submitted to Obsidian's Community Plugins directory. Once approved, install it directly from **Settings > Community plugins**. Obsidian downloads release assets from GitHub, so the installation remains independent from vault content sync.
+
+### Development
+
+For development, clone this repository outside the vault, install dependencies, and build:
 
 ```bash
 npm install
 npm run build
 ```
 
-Copy the files from `dist/` into `.obsidian/plugins/obsidian-markdown-formatter/`, then enable **Obsidian Markdown Formatter** in Obsidian's Community Plugins settings. A release contains `main.js`, `manifest.json`, `styles.css`, and `versions.json`.
+The build produces `dist/main.js`, `dist/manifest.json`, `dist/styles.css`, and `dist/versions.json`. GitHub Releases publishes these files; do not commit `dist/`.
 
 ## Usage
 

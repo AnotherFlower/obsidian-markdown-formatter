@@ -15,24 +15,28 @@
 - 每次修改都可以预览、确认或取消。
 - 保存最近的修复快照，支持恢复最近一次修复。
 
-## 当前 Vault 的安装状态
+## 安装与跨端使用
 
-本 Vault 的插件目录为：
+插件不应作为 Vault 内容同步。每台设备都应从 GitHub 独立安装，笔记和附件仍按原有方式同步。
 
-```text
-.obsidian/plugins/obsidian-markdown-formatter/
-```
+### 立即可用：使用 BRAT 从 GitHub 安装
 
-其中应包含：
+1. 在 Obsidian 的“设置 → 第三方插件”中安装并启用 **BRAT**。
+2. 打开命令面板，执行 `BRAT: Add a beta plugin for testing`。
+3. 输入仓库：`AnotherFlower/obsidian-markdown-formatter`。
+4. 启用 **Obsidian Markdown Formatter**。
 
-```text
-main.js
-manifest.json
-styles.css
-versions.json
-```
+BRAT 会从本仓库的 GitHub Release 下载 `main.js`、`manifest.json`、`styles.css` 和 `versions.json`。在每台电脑或移动设备上重复上述步骤即可；不要从另一台设备复制 `.obsidian/plugins/obsidian-markdown-formatter/`。
 
-安装或更新文件后，请重启 Obsidian，或者在第三方插件页面点击刷新。然后在“设置 → 第三方插件”中启用 **Obsidian Markdown Formatter**。
+### 官方社区插件目录
+
+本插件也会提交到 Obsidian 官方 Community Plugins 目录。审核通过后，可直接在“设置 → 第三方插件”中搜索 **Obsidian Markdown Formatter** 安装；安装文件仍由 Obsidian 从 GitHub Release 获取。
+
+### 同步设置
+
+- 保持笔记、附件和需要同步的常规设置同步。
+- 在 Obsidian Sync 中关闭插件或社区插件文件同步，避免不同设备互相覆盖插件版本。
+- 当前设备已存在的旧手工安装目录会被移除，再通过 BRAT 重新安装为本机独立副本。
 
 ## 使用方法
 
@@ -116,13 +120,11 @@ $$
 - 不进行语义改写，不把普通文本猜测成公式或表格。
 - 不确定的内容会跳过，并在预览窗口中列出原因。
 
-## 手动安装和开发
+## 发布与开发
 
-从 GitHub 下载 Release 中的 `main.js`、`manifest.json`、`styles.css` 和 `versions.json`，复制到：
+GitHub Release 是插件发布产物的唯一来源。Release 由 GitHub Actions 构建并附带 `main.js`、`manifest.json`、`styles.css` 和 `versions.json`；不要将 `dist/` 或 Vault 的插件目录提交、复制或同步到其他设备。
 
-```text
-<Vault>/.obsidian/plugins/obsidian-markdown-formatter/
-```
+开发时请将仓库克隆到 Vault 之外，避免源码、依赖和构建缓存进入笔记同步范围。
 
 开发命令：
 
