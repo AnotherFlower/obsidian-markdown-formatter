@@ -26,7 +26,7 @@
 3. 输入仓库：`AnotherFlower/obsidian-markdown-formatter`。
 4. 启用 **Obsidian Markdown Formatter**。
 
-BRAT 会从本仓库的 GitHub Release 下载 `main.js`、`manifest.json`、`styles.css` 和 `versions.json`。在每台电脑或移动设备上重复上述步骤即可；不要从另一台设备复制 `.obsidian/plugins/obsidian-markdown-formatter/`。
+BRAT 会从本仓库的 GitHub Release 下载 `main.js`、`manifest.json`、`styles.css` 和 `versions.json`。在每台电脑或移动设备上重复上述步骤即可；不要从另一台设备复制 `.obsidian/plugins/anotherflower-markdown-formatter/`。
 
 ### 官方社区插件目录
 

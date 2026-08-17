@@ -27,7 +27,7 @@ Until the plugin is listed in the official Community Plugins directory, install 
 2. Run **BRAT: Add a beta plugin for testing**.
 3. Enter `AnotherFlower/obsidian-markdown-formatter` and enable **Obsidian Markdown Formatter**.
 
-BRAT downloads the plugin from this repository's GitHub releases. Install it independently on every device; do not copy or sync `.obsidian/plugins/obsidian-markdown-formatter/` through a vault sync service.
+BRAT downloads the plugin from this repository's GitHub releases. Install it independently on every device; do not copy or sync `.obsidian/plugins/anotherflower-markdown-formatter/` through a vault sync service.
 
 ### Official Community Plugins
 
