@@ -52,11 +52,8 @@ export class RepairPreviewModal extends Modal {
     const cancel = buttons.createEl("button", { text: "Cancel" });
     cancel.addEventListener("click", () => this.close());
     const confirm = buttons.createEl("button", { text: "Apply", cls: "mod-cta" });
-    confirm.addEventListener("click", async () => {
-      if (this.resolved) return;
-      this.resolved = true;
-      await this.onConfirm();
-      this.close();
+    confirm.addEventListener("click", () => {
+      void this.confirmAndClose();
     });
   }
 
@@ -66,6 +63,13 @@ export class RepairPreviewModal extends Modal {
     this.renderComponent = undefined;
     this.contentEl.empty();
     this.modalEl.classList.remove("omf-resizable-modal");
+  }
+
+  private async confirmAndClose(): Promise<void> {
+    if (this.resolved) return;
+    this.resolved = true;
+    await this.onConfirm();
+    this.close();
   }
 }
 

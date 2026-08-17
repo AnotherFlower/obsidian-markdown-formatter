@@ -99,7 +99,6 @@ export const tableRule: RepairRule = {
         : renderRow(cells, columnCount));
       const oldLines = lines.slice(start, start + group.length);
       const hasListPrefix = prefix.length > 0;
-      const afterIndex = start + group.length;
       const beforeNeedsBlank = !hasListPrefix && start > 0 && lines[start - 1].trim().length > 0;
       if (beforeNeedsBlank) {
         lines.splice(start, 0, "");

@@ -33,7 +33,9 @@ export class FormatterSettingTab extends PluginSettingTab {
   display(): void {
     const { containerEl } = this;
     containerEl.empty();
-    containerEl.createEl("h2", { text: "Obsidian Markdown Formatter" });
+    new Setting(containerEl)
+      .setName("Markdown Formatter")
+      .setHeading();
 
     new Setting(containerEl)
       .setName("Always show preview")
@@ -73,7 +75,9 @@ export class FormatterSettingTab extends PluginSettingTab {
         }
       }));
 
-    containerEl.createEl("h3", { text: "Enabled rules" });
+    new Setting(containerEl)
+      .setName("Enabled rules")
+      .setHeading();
     for (const rule of RULE_LABELS) {
       new Setting(containerEl)
         .setName(rule.name)
