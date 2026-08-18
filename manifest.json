@@ -1,7 +1,7 @@
 {
   "id": "anotherflower-markdown-formatter",
   "name": "Markdown Formatter",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "minAppVersion": "1.13.0",
   "description": "Conservatively repairs common Markdown formatting errors locally, with previews and recovery.",
   "author": "AnotherFlower",
