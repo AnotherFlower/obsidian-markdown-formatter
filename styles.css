@@ -5,6 +5,8 @@
 .omf-path-migration-controls { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: 0.75rem 0; }
 .omf-path-migration-select-all { display: inline-flex; gap: 0.5rem; align-items: center; margin-right: 0.25rem; }
 .omf-path-migration-selection-summary { color: var(--text-muted); margin-left: auto; }
+.omf-path-migration-preview-list { margin: 0.75rem 0; }
+.omf-path-migration-preview { overflow-wrap: anywhere; }
 .omf-rendered-preview { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 1rem 0; }
 .omf-preview-panel { min-width: 0; border: 1px solid var(--background-modifier-border); border-radius: 6px; overflow: hidden; }
 .omf-preview-panel h3 { margin: 0; padding: 0.6rem 0.8rem; font-size: var(--font-ui-small); background: var(--background-secondary); }

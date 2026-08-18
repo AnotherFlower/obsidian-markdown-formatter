@@ -102,12 +102,12 @@ export class PathMigrationSelectionModal extends Modal {
   }
 }
 
-export class PathMigrationPreviewModal extends Modal {
+export class PathMigrationBatchPreviewModal extends Modal {
   private resolved = false;
 
   constructor(
     app: App,
-    private readonly candidate: PathMigrationCandidate,
+    private readonly candidates: PathMigrationCandidate[],
     private readonly onConfirm: () => Promise<void> | void,
     private readonly onCancel?: () => void
   ) {
@@ -115,26 +115,30 @@ export class PathMigrationPreviewModal extends Modal {
   }
 
   onOpen(): void {
-    this.titleEl.setText("Review note path migration");
+    this.titleEl.setText("Review selected path migrations");
     const content = this.contentEl;
     content.empty();
-    content.createEl("p", { text: "The note body will not be changed." });
-    const paths = content.createDiv({ cls: "omf-path-migration-preview" });
-    paths.createEl("code", { text: this.candidate.plan.sourcePath });
-    paths.createSpan({ text: " -> " });
-    paths.createEl("code", { text: this.candidate.plan.targetPath });
-    if (this.candidate.plan.targetDirectories.length > 0) {
+    content.createEl("p", { text: `${this.candidates.length} selected note${this.candidates.length === 1 ? "" : "s"} will be moved. Note bodies will not be changed.` });
+    const paths = content.createDiv({ cls: "omf-batch-list omf-path-migration-preview-list" });
+    for (const candidate of this.candidates) {
+      const item = paths.createDiv({ cls: "omf-path-migration-preview" });
+      item.createEl("code", { text: candidate.plan.sourcePath });
+      item.createSpan({ text: " -> " });
+      item.createEl("code", { text: candidate.plan.targetPath });
+    }
+    const directoriesToCreate = [...new Set(this.candidates.flatMap((candidate) => candidate.plan.targetDirectories))];
+    if (directoriesToCreate.length > 0) {
       const directories = content.createEl("details");
-      directories.createEl("summary", { text: "Target directories" });
+      directories.createEl("summary", { text: `${directoriesToCreate.length} target director${directoriesToCreate.length === 1 ? "y" : "ies"}` });
       const list = directories.createEl("ul");
-      for (const directory of this.candidate.plan.targetDirectories) {
+      for (const directory of directoriesToCreate) {
         list.createEl("li", { text: `${directory} (created if missing)` });
       }
     }
     const buttons = content.createDiv({ cls: "omf-modal-buttons" });
-    const skip = buttons.createEl("button", { text: "Skip" });
-    skip.addEventListener("click", () => this.close());
-    const move = buttons.createEl("button", { text: "Move", cls: "mod-cta" });
+    const cancel = buttons.createEl("button", { text: "Cancel" });
+    cancel.addEventListener("click", () => this.close());
+    const move = buttons.createEl("button", { text: `Move ${this.candidates.length} file(s)`, cls: "mod-cta" });
     move.addEventListener("click", () => {
       void this.confirmAndClose();
     });

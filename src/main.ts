@@ -3,7 +3,7 @@ import { repairEngine, RepairResult } from "./engine/repair-engine";
 import { FormatterPluginLike, FormatterSettings, FormatterSettingTab, DEFAULT_SETTINGS } from "./settings/settings";
 import { BatchCandidate, BatchSelectionModal } from "./ui/batch-modal";
 import { RepairPreviewModal } from "./ui/preview-modal";
-import { PathMigrationCandidate, PathMigrationPreviewModal, PathMigrationSelectionModal } from "./ui/path-migration-modal";
+import { PathMigrationBatchPreviewModal, PathMigrationCandidate, PathMigrationSelectionModal } from "./ui/path-migration-modal";
 import { PathMigrationPlan, scanEncodedMarkdownPaths } from "./path/encoded-path";
 
 interface SnapshotFile {
@@ -151,10 +151,11 @@ export default class MarkdownFormatterPlugin extends Plugin implements Formatter
   }
 
   private async reviewPathMigrations(candidates: PathMigrationCandidate[]): Promise<void> {
+    const confirmed = await this.confirmPathMigrations(candidates);
+    if (!confirmed) return;
+
     const moves: SnapshotMove[] = [];
     for (const candidate of candidates) {
-      const confirmed = await this.confirmPathMigration(candidate);
-      if (!confirmed) continue;
       const source = this.app.vault.getAbstractFileByPath(candidate.plan.sourcePath);
       if (!(source instanceof TFile)) {
         new Notice(`Skipped ${candidate.plan.sourcePath}: source file changed after scanning.`);
@@ -178,11 +179,11 @@ export default class MarkdownFormatterPlugin extends Plugin implements Formatter
     }
   }
 
-  private confirmPathMigration(candidate: PathMigrationCandidate): Promise<boolean> {
+  private confirmPathMigrations(candidates: PathMigrationCandidate[]): Promise<boolean> {
     return new Promise((resolve) => {
-      new PathMigrationPreviewModal(
+      new PathMigrationBatchPreviewModal(
         this.app,
-        candidate,
+        candidates,
         () => resolve(true),
         () => resolve(false)
       ).open();
