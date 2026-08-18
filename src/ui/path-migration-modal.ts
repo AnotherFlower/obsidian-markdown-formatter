@@ -34,10 +34,6 @@ export class PathMigrationSelectionModal extends Modal {
     this.selectAllCheckbox.addEventListener("change", () => {
       this.setAllSelected(this.selectAllCheckbox?.checked ?? false);
     });
-    const selectAll = controls.createEl("button", { text: "Select all" });
-    selectAll.addEventListener("click", () => this.setAllSelected(true));
-    const clearAll = controls.createEl("button", { text: "Clear all" });
-    clearAll.addEventListener("click", () => this.setAllSelected(false));
     this.selectionSummary = controls.createSpan({ cls: "omf-path-migration-selection-summary" });
     const list = content.createDiv({ cls: "omf-batch-list" });
     for (const candidate of this.candidates) {

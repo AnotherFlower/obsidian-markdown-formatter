@@ -1,6 +1,6 @@
 {
   "name": "anotherflower-markdown-formatter",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "private": true,
   "description": "A conservative, local Markdown format repair plugin for Obsidian.",
   "main": "main.js",
